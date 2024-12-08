@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>FEM Visualization</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        #renderCanvas {
+            width: 100%;
+            height: 100%;
+            touch-action: none;
+        }
+        #controlPanel {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="renderCanvas"></canvas>
+    <div id="controlPanel">
+        <div>
+            <label>Displacement:</label>
+            <input type="range" id="displacementSlider" min="0" max="255" value="0">
+        </div>
+        <div>
+            <label>Mode:</label>
+            <select id="modeSelect">
+                <option value="stress">Stress</option>
+                <option value="x">X Displacement</option>
+                <option value="y">Y Displacement</option>
+                <option value="z">Z Displacement</option>
+                <option value="total">Total</option>
+            </select>
+        </div>
+        <div>
+            <label>Ortho:</label>
+            <input type="checkbox" id="orthoCheckbox" checked>
+        </div>
+        <div>
+            <label>Elements:</label>
+            <input type="checkbox" id="elementsCheckbox" checked>
+        </div>
+        <div>
+            <label>Lines:</label>
+            <input type="checkbox" id="linesCheckbox" checked>
+        </div>
+        <div>
+            <label>Subdivisions:</label>
+            <input type="range" id="subdivisionsSlider" min="1" max="8" value="3" step="1">
+        </div>
+        <div>
+            <input type="file" id="fileInput" accept=".json" style="display: none">
+            <button id="openFileButton">Open File</button>
+        </div>
+    </div>
+
+    <!-- Babylon.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babylonjs/6.37.1/babylon.js"></script>
+    
+    <!-- Our scripts -->
+    <script src="fem-elements.js"></script>
+    <script src="fem-camera.js"></script>
+    <script src="fem-mesh.js"></script>
+    <script src="main-app.js"></script>
+</body>
+</html>
